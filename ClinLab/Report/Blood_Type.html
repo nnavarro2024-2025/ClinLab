@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+
+	<link rel="stylesheet" href="../style.css">
+
+	<title>Blood Type</title>
+</head>
+
+<body>
+
+
+	<!-- SIDEBAR -->
+	<section id="sidebar">
+		<a href="#" class="brand">
+			<img src="../img/uic-logo.png" class="logo-icon" />
+			<span class="text ClinLabtext">ClinLab</span>
+		</a>
+
+		<ul class="side-menu top">
+
+			<li class="active">
+				<a href="#">
+					<i class='bx bx-test-tube'></i>
+					<span class="text">Report</span>
+				</a>
+				<ul class="sub-menu">
+
+					<li>
+						<a href="../Report/urinalysis_report.html">
+							<span class="text sub-text">Urinalysis</span>
+						</a>
+					</li>
+					<li>
+						<a href="../Report/Blood_Type.html">
+							<span class="text sub-text">Blood Type</span>
+						</a>
+					</li>
+
+				</ul>
+			</li>
+
+			<li>
+				<a href="../View_record/View_record.html">
+					<i class='bx bxs-folder-open'></i>
+					<span class="text">View Student Account</span>
+				</a>
+			</li>
+
+			<li>
+				<a href="../Account/Add_Account.html">
+					<i class='bx bxs-user-account'></i>
+					<span class="text">Add Account</span>
+				</a>
+			</li>
+
+
+
+		</ul>
+
+		<ul class="side-menu">
+
+			<li>
+				<a href="#" class="logout">
+					<i class='bx bxs-log-out-circle'></i>
+					<span class="text">Logout</span>
+				</a>
+			</li>
+		</ul>
+	</section>
+	<!-- SIDEBAR -->
+
+
+
+	<!-- CONTENT -->
+	<section id="content">
+		<!-- NAVBAR -->
+		<nav>
+			<i class='bx bx-menu'></i>
+			<a class="nav-link">UIC Clinical Laboratory</a>
+
+
+		</nav>
+		  
+		
+		<!-- NAVBAR -->
+
+		<!-- MAIN -->
+		<main>
+			<div class="head-title">
+				<div class="left">
+
+					<ul class="breadcrumb">
+						<li>
+							<a href="#">Report</a>
+						</li>
+						<li><i class='bx bx-chevron-right'></i></li>
+						<li>
+							<a class="active" href="#">Blood Types</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+			<form action="../Report/Blood_Type.php" method="POST">	
+				<div class="table-data">
+					<div class="order">
+						<div class="head">
+							<h3>Blood Type</h3>
+
+
+
+							<i class='bx bx-filter'></i>
+						</div>
+
+
+
+
+						<div class="blood-type-details">
+							<label for="blood-type">Blood Type:</label>
+							<select id="blood-type" name="blood-type" required>
+								<option value="" disabled selected>Select Blood Type</option>
+								<option value="O+">O+</option>
+								<option value="O-">O-</option>
+								<option value="A+">A+</option>
+								<option value="A-">A-</option>
+								<option value="B+">B+</option>
+								<option value="B-">B-</option>
+								<option value="AB+">AB+</option>
+								<option value="AB-">AB-</option>
+							</select>
+						</div>
+
+
+
+
+						<div class="button">
+							<input type="submit" value="Record">
+						</div>
+
+
+					</div>
+					<div class="todo">
+						<div class="head">
+							<h3>Lab Report - Student Data</h3>
+							<i class='bx bx-filter'></i>
+						</div>
+						<div class="blood-type-student-info">
+							<div class="info-group">
+								<label for="blood-type-student-name">Name:</label>
+								<input type="text" id="blood-type-student-name" placeholder="Enter name">
+							</div>
+							<div class="info-group">
+								<label for="blood-type-student-age">Age:</label>
+								<input type="text" id="blood-type-student-age" placeholder="Enter age">
+							</div>
+							<div class="info-group">
+								<label for="blood-type-student-gender">Gender:</label>
+								<select id="blood-type-student-gender">
+									<option value="F">Female</option>
+									<option value="M">Male</option>
+								</select>
+							</div>
+							<div class="info-group">
+								<label for="blood-type-course-year">Course & Year:</label>
+								<input type="text" id="blood-type-course-year" placeholder="Enter course and year">
+							</div>
+							<div class="info-group">
+								<label for="blood-type-student-id">Student No.:</label>
+								<input type="text" id="blood-type-student-id" placeholder="Enter Student No.">
+							</div>
+							<div class="info-group">
+								<label for="blood-type-student-department">Department:</label>
+								<input type="text" id="blood-type-student-department" placeholder="Enter department">
+							</div>
+							<div class="info-group">
+								<label for="blood-type-date">Date:</label>
+								<input type="date" id="blood-type-date">
+							</div>
+							<div class="info-group">
+								<label for="blood-type-lab-number">Lab No.:</label>
+								<input type="text" id="blood-type-lab-number" placeholder="Enter lab number">
+							</div>
+							<div class="info-group">
+								<label for="blood-type-physician">Physician:</label>
+								<input type="text" id="blood-type-physician" placeholder="Enter physician's name">
+							</div>
+						</div>
+					</div>
+				</div>
+			</form>
+		</main>
+		<!-- MAIN -->
+	</section>
+	<!-- CONTENT -->
+
+
+	<script src="../script.js"></script>
+	<script>
+		document.querySelectorAll('.side-menu > li > a').forEach(item => {
+    item.addEventListener('click', function (e) {
+        const subMenu = this.nextElementSibling;
+        const parentLi = this.parentElement;
+
+        
+        document.querySelectorAll('.side-menu .sub-menu').forEach(menu => {
+            if (menu !== subMenu) {
+                menu.style.display = 'none'; 
+                menu.parentElement.classList.remove('expanded'); 
+            }
+        });
+
+        if (subMenu) {
+          
+            if (subMenu.style.display === 'block') {
+                subMenu.style.display = 'none';
+                parentLi.classList.remove('expanded'); 
+            } else {
+                subMenu.style.display = 'block';
+                parentLi.classList.add('expanded'); 
+            }
+        }
+        
+    });
+});
+
+
+document.querySelectorAll('.side-menu .sub-menu li a').forEach(subItem => {
+    subItem.addEventListener('click', function () {
+        
+        const subMenu = this.closest('.sub-menu');
+        if (subMenu) {
+            subMenu.style.display = 'none';
+            subMenu.parentElement.classList.remove('expanded'); 
+        }
+    });
+});
+	</script>
+
+</body>
+
+</html>

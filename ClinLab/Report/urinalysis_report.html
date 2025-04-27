@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+
+	<link rel="stylesheet" href="../style.css">
+
+	<title>Urinalysis Report</title>
+
+
+</head>
+
+<body>
+
+
+	<!-- SIDEBAR -->
+	<section id="sidebar">
+		<a href="#" class="brand">
+			<img src="../img/uic-logo.png" class="logo-icon" />
+			<span class="text ClinLabtext">ClinLab</span>
+		</a>
+
+		<ul class="side-menu top">
+
+			<li class="active">
+				<a href="#">
+					<i class='bx bx-test-tube'></i>
+					<span class="text">Report</span>
+				</a>
+				<ul class="sub-menu">
+
+					<li>
+						<a href="../Report/urinalysis_report.html">
+							<span class="text sub-text">Urinalysis</span>
+						</a>
+					</li>
+					<li>
+						<a href="../Report/Blood_Type.html">
+							<span class="text sub-text">Blood Type</span>
+						</a>
+					</li>
+
+				</ul>
+			</li>
+
+			<li>
+				<a href="../View_record/View_record.html">
+					<i class='bx bxs-folder-open'></i>
+					<span class="text">View Student Account</span>
+				</a>
+			</li>
+
+			<li>
+				<a href="../Account/Add_Account.html">
+					<i class='bx bxs-user-account'></i>
+					<span class="text">Add Account</span>
+				</a>
+			</li>
+
+
+
+		</ul>
+		<ul class="side-menu">
+
+			<li>
+				<a href="#" class="logout">
+					<i class='bx bxs-log-out-circle'></i>
+					<span class="text">Logout</span>
+				</a>
+			</li>
+		</ul>
+	</section>
+	<!-- SIDEBAR -->
+
+
+
+	<!-- CONTENT -->
+	<section id="content">
+		<!-- NAVBAR -->
+		<nav>
+			<i class='bx bx-menu'></i>
+			<a class="nav-link">UIC Clinical Laboratory</a>
+
+
+		</nav>
+		<!-- NAVBAR -->
+
+		<!-- MAIN -->
+		<main>
+			<div class="head-title">
+				<div class="left">
+
+					<ul class="breadcrumb">
+						<li>
+							<a href="#">Report</a>
+						</li>
+						<li><i class='bx bx-chevron-right'></i></li>
+						<li>
+							<a class="active" href="#">Urinalysis Report</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+
+
+			<form action="../Report/urinalysis_report.php" method="POST">				<!-- form---------------------------------------------------------------->
+				<div class="table-data">
+					<div class="order">
+						<div class="head">
+							<h3>Urinalysis Report</h3>
+
+
+
+							<i class='bx bx-filter'></i>
+						</div>
+
+
+
+						<h2>Physical Examination</h2>
+						<table>
+							<tr>
+								<th>Color:</th>
+								<td><input type="text" name="color" placeholder="Enter color"></td>
+							</tr>
+							<tr>
+								<th>Clarity:</th>
+								<td><input type="text" name="clarity" placeholder="Enter clarity"></td>
+							</tr>
+						</table>
+
+
+						<h2>Chemical Examination</h2>
+						<table>
+							<tr>
+								<th>pH:</th>
+								<td><input type="text" name="ph" placeholder="Enter pH"></td>
+								<th>Glucose:</th>
+								<td><input type="text" name="glucose" placeholder="Enter glucose result"></td>
+							</tr>
+							<tr>
+								<th>Sp. Gr.:</th>
+								<td><input type="text" name="specific-gravity" placeholder="Enter specific gravity"></td>
+								<th>Albumin:</th>
+								<td><input type="text" name="albumin" placeholder="Enter albumin result"></td>
+							</tr>
+						</table>
+
+
+						<h2>Microscopic Examination</h2>
+						<table>
+							<tr>
+								<th>Pus:</th>
+								<td><input type="text" name="pus-result" placeholder="Enter result"></td>
+								<td>/hpf</td>
+							</tr>
+							<tr>
+								<th>RBC:</th>
+								<td><input type="text" name="rbc-result" placeholder="Enter result"></td>
+								<td>/hpf</td>
+							</tr>
+							<tr>
+								<th>Renal Cell:</th>
+								<td><input type="text" name="renal-cell" placeholder="Enter result"></td>
+							</tr>
+							<tr>
+								<th>Epithelial Cell:</th>
+								<td><input type="text" name="epithelial-cell" placeholder="Enter result"></td>
+							</tr>
+							<tr>
+								<th>Mucus Thread:</th>
+								<td><input type="text" name="mucus-thread" placeholder="Enter result"></td>
+							</tr>
+							<tr>
+								<th>Bacteria:</th>
+								<td><input type="text" name="bacteria" placeholder="Enter result"></td>
+							</tr>
+							<tr>
+								<th>Yeast Cells:</th>
+								<td><input type="text" name="yeast-cells" placeholder="Enter result"></td>
+							</tr>
+							<tr>
+								<th>Amorphous (Urates/Phosphates):</th>
+								<td><input type="text" name="amorphous" placeholder="Enter result"></td>
+							</tr>
+							<tr>
+								<th>Coarse Granular Cast:</th>
+								<td><input type="text" name="coarse-granular-cast" placeholder="Enter result"></td>
+							</tr>
+							<tr>
+								<th>Fine Granular Cast:</th>
+								<td><input type="text" name="fine-granular-cast" placeholder="Enter result"></td>
+							</tr>
+							<tr>
+								<th>Hyaline Cast:</th>
+								<td><input type="text" name="hyaline-cast" placeholder="Enter result"></td>
+							</tr>
+							<tr>
+								<th>Uric Acid:</th>
+								<td><input type="text" name="uric-acid" placeholder="Enter result"></td>
+							</tr>
+							<tr>
+								<th>Calcium Oxalate:</th>
+								<td><input type="text" name="calcium-oxalate" placeholder="Enter result"></td>
+							</tr>
+							<tr>
+								<th>Triple Phosphate:</th>
+								<td><input type="text" name="triple-phosphate" placeholder="Enter result"></td>
+							</tr>
+						</table>
+
+						<h3>Others:</h3>
+						<textarea name="others" rows="4" cols="50" placeholder="Enter other findings here"></textarea>
+
+						<div class="button">
+							<input type="submit" value="Record">
+						</div>
+
+
+
+					</div>
+					<div class="todo">
+						<div class="head">
+							<h3>Lab Report - Student Data</h3>
+							<i class='bx bx-filter'></i>
+						</div>
+
+						<div class="urinalysis-rep-student-info">
+							<div class="info-group">
+								<label for="urinalysis-rep-student-name">Name:</label>
+								<input type="text" name="urinalysis-rep-student-name" placeholder="Enter name" required>
+							</div>
+							<div class="info-group">
+								<label for="urinalysis-rep-student-age">Age:</label>
+								<input type="text" name="urinalysis-rep-student-age" placeholder="Enter age" required>
+							</div>
+							<div class="info-group">
+								<label for="urinalysis-rep-student-gender">Gender:</label>
+								<select id="urinalysis-rep-student-gender" name="gender" required>
+								  <option value="F">Female</option>
+								  <option value="M">Male</option>
+								</select>
+							  </div>
+							  
+							<div class="info-group">
+								<label for="fecalysis-rep-course-year">Course & Year:</label>
+								<input type="text" name="fecalysis-rep-course-year" placeholder="Enter course and year" required>
+							</div>
+							<div class="info-group">
+								<label for="urinalysis-rep-student-id">Student No.:</label>
+								<input type="text" name="urinalysis-rep-student-id" placeholder="Enter Student No." required>
+							</div>
+							<div class="info-group">
+								<label for="urinalysis-rep-student-department" >Department:</label>
+								<input type="text" name="urinalysis-rep-student-department"
+									placeholder="Enter department">
+							</div>
+							<div class="info-group">
+								<label for="urinalysis-rep-date">Date:</label>
+								<input type="date" name="urinalysis-rep-date" required>
+							</div>
+							<div class="info-group">
+								<label for="urinalysis-rep-lab-number">Lab No.:</label>
+								<input type="text" name="urinalysis-rep-lab-number" placeholder="Enter lab number" required>
+							</div>
+							<div class="info-group">
+								<label for="urinalysis-rep-physician">Physician:</label>
+								<input type="text" name="urinalysis-rep-physician" placeholder="Enter physician's name">
+							</div>
+						</div>
+
+
+					</div>
+				</div>
+			</form>
+		</main>
+		<!-- MAIN -->
+	</section>
+	<!-- CONTENT -->
+
+
+	<script src="../script.js"></script>
+	<script>
+		document.querySelectorAll('.side-menu > li > a').forEach(item => {
+    item.addEventListener('click', function (e) {
+        const subMenu = this.nextElementSibling;
+        const parentLi = this.parentElement;
+
+        
+        document.querySelectorAll('.side-menu .sub-menu').forEach(menu => {
+            if (menu !== subMenu) {
+                menu.style.display = 'none'; 
+                menu.parentElement.classList.remove('expanded'); 
+            }
+        });
+
+        if (subMenu) {
+          
+            if (subMenu.style.display === 'block') {
+                subMenu.style.display = 'none';
+                parentLi.classList.remove('expanded'); 
+            } else {
+                subMenu.style.display = 'block';
+                parentLi.classList.add('expanded'); 
+            }
+        }
+        
+    });
+});
+
+
+document.querySelectorAll('.side-menu .sub-menu li a').forEach(subItem => {
+    subItem.addEventListener('click', function () {
+        
+        const subMenu = this.closest('.sub-menu');
+        if (subMenu) {
+            subMenu.style.display = 'none';
+            subMenu.parentElement.classList.remove('expanded'); 
+        }
+    });
+});
+	</script>
+
+
+</body>
+
+</html>

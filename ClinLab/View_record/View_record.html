@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	
+	<link rel="stylesheet" href="../style.css">
+
+	<title>View Account</title>
+</head>
+<body>
+
+
+	<!-- SIDEBAR -->
+	<section id="sidebar">
+		<a href="#" class="brand">
+			<img src="../img/uic-logo.png" class="logo-icon" />
+			<span class="text ClinLabtext">ClinLab</span>
+		</a>
+
+		<ul class="side-menu top">
+
+			<li>
+				<a href="#">
+					<i class='bx bx-test-tube'></i>
+					<span class="text">Report</span>
+				</a>
+				<ul class="sub-menu">
+
+					<li>
+						<a href="../Report/urinalysis_report.html">
+							<span class="text sub-text">Urinalysis</span>
+						</a>
+					</li>
+					<li>
+						<a href="../Report/Blood_Type.html">
+							<span class="text sub-text">Blood Type</span>
+						</a>
+					</li>
+
+				</ul>
+			</li>
+
+			<li class="active">
+				<a href="../View_record/View_record.html">
+					<i class='bx bxs-folder-open'></i>
+					<span class="text">View Student Account</span>
+				</a>
+			</li>
+
+			<li>
+				<a href="../Account/Add_Account.html">
+					<i class='bx bxs-user-account'></i>
+					<span class="text">Add Account</span>
+				</a>
+			</li>
+
+
+
+		</ul>
+
+		<ul class="side-menu">
+
+			<li>
+				<a href="#" class="logout">
+					<i class='bx bxs-log-out-circle'></i>
+					<span class="text">Logout</span>
+				</a>
+			</li>
+		</ul>
+	</section>
+	<!-- SIDEBAR -->
+
+
+
+	<!-- CONTENT -->
+	<section id="content">
+		<!-- NAVBAR -->
+		<nav>
+			<i class='bx bx-menu'></i>
+			<a class="nav-link">UIC Clinical Laboratory</a>
+
+
+		</nav>
+		<!-- NAVBAR -->
+
+		<!-- MAIN -->
+		<main>
+			<div class="head-title">
+				<div class="left">
+					
+					<ul class="breadcrumb">
+						<li>
+							<a class="active" href="#">View PAccount</a>
+						</li>
+					</ul>
+					
+				</div>
+				
+
+			</div>
+			
+
+
+			<form action="#">
+				<div class="table-data">
+				  <div class="order">
+					<div class="head">
+					  <div class="title">Record</div>
+					  <div class="form-input">
+						<input class="search-bar" placeholder="Search...">
+						<button type="button" class="search-btn"><i class='bx bx-search'></i></button>
+					  </div>
+					</div>
+			  
+					<table id="account-table">
+					  <thead>
+						<tr>
+						  <th>First Name</th>
+						  <th>Last Name</th>
+						  <th>Course Year</th>
+						  <th>Student ID</th>
+						  <th>Department</th>
+						</tr>
+					  </thead>
+					  <tbody></tbody>
+					</table>
+				  </div>
+				</div>
+			  </form>
+			  
+		</main>
+		<!-- MAIN -->
+	</section>
+	<!-- CONTENT -->
+	
+
+	<script src="../script.js"></script>
+	<script>
+		document.querySelectorAll('.side-menu > li > a').forEach(item => {
+    item.addEventListener('click', function (e) {
+        const subMenu = this.nextElementSibling;
+        const parentLi = this.parentElement;
+
+        
+        document.querySelectorAll('.side-menu .sub-menu').forEach(menu => {
+            if (menu !== subMenu) {
+                menu.style.display = 'none'; 
+                menu.parentElement.classList.remove('expanded'); 
+            }
+        });
+
+        if (subMenu) {
+          
+            if (subMenu.style.display === 'block') {
+                subMenu.style.display = 'none';
+                parentLi.classList.remove('expanded'); 
+            } else {
+                subMenu.style.display = 'block';
+                parentLi.classList.add('expanded'); 
+            }
+        }
+        
+    });
+});
+
+
+document.querySelectorAll('.side-menu .sub-menu li a').forEach(subItem => {
+    subItem.addEventListener('click', function () {
+        
+        const subMenu = this.closest('.sub-menu');
+        if (subMenu) {
+            subMenu.style.display = 'none';
+            subMenu.parentElement.classList.remove('expanded'); 
+        }
+    });
+});
+	</script>
+
+<script>
+	document.querySelector('.search-btn').addEventListener('click', function (e) {
+	    e.preventDefault(); 
+	    const query = document.querySelector('.search-bar').value;
+	    console.log(query); 
+
+	    fetch(`../View_record/fetch_accounts.php?search=${encodeURIComponent(query)}`)
+	        .then(res => res.json())
+	        .then(data => {
+	            const tbody = document.querySelector('#account-table tbody');
+	            tbody.innerHTML = ''; 
+
+	            if (data.length === 0) {
+	                tbody.innerHTML = '<tr><td colspan="6">No results found</td></tr>';
+	                return;
+	            }
+
+	            data.forEach(account => {
+	                const row = `<tr>
+	                              <td>${account.first_name}</td>
+	                              <td>${account.last_name}</td>
+	                              <td>${account.course_year}</td>
+	                              <td>${account.student_id}</td>
+	                              <td>${account.department}</td>
+	                              <td>
+	                                <button class="edit-btn" data-id="${account.student_id}">Edit</button>
+	                                <button class="delete-btn" data-id="${account.student_id}">Delete</button>
+	                              </td>
+	                            </tr>`;
+	                tbody.innerHTML += row;
+	            });
+	        })
+	        .catch(error => {
+	            console.error('Error fetching accounts:', error);
+	        });
+	});
+
+
+	document.querySelector('#account-table tbody').addEventListener('click', function(e) {
+	    if (e.target.classList.contains('edit-btn')) {
+	        const studentId = e.target.getAttribute('data-id');
+	        editAccount(studentId);
+	    } else if (e.target.classList.contains('delete-btn')) {
+	        const studentId = e.target.getAttribute('data-id');
+	        deleteAccount(studentId, e.target.closest('tr'));
+	    }
+	});
+
+	// Redirect to Edit page with ID
+	function editAccount(studentId) {
+	    console.log(`Editing account with ID: ${studentId}`);
+		event.preventDefault();
+	    window.location.href = `../Account/Edit_Account.html?id=${studentId}`;
+		
+	}
+
+
+	// Delete function
+	function deleteAccount(studentId, row) {
+	    if (confirm('Are you sure you want to delete this account?')) {
+	        console.log(`Deleting account with ID: ${studentId}`);
+	        fetch(`../View_record/delete_account.php?id=${studentId}`, { method: 'GET' })
+	            .then(response => response.json())
+	            .then(data => {
+	                if (data.success) {
+	                    alert('Account deleted successfully!');
+	                    row.remove();
+	                } else {
+	                    alert('Failed to delete account.');
+	                }
+	            })
+	            .catch(error => {
+	                console.error('Error deleting account:', error);
+	            });
+	    }
+	}
+</script>
+
+
+</body>
+</html>

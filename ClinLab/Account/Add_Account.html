@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+	<link href='https://unpkg.com/boxicons@2.0.9/css/boxicons.min.css' rel='stylesheet'>
+	<!-- My CSS -->
+	<link rel="stylesheet" href="../style.css">
+
+	<title>Add Account</title>
+</head>
+
+<body>
+
+
+	<!-- SIDEBAR -->
+	<section id="sidebar">
+		<a href="#" class="brand">
+			<img src="../img/uic-logo.png" class="logo-icon" />
+			<span class="text ClinLabtext">ClinLab</span>
+		</a>
+
+		<ul class="side-menu top">
+
+			<li>
+				<a href="#">
+					<i class='bx bx-test-tube'></i>
+					<span class="text">Report</span>
+				</a>
+				<ul class="sub-menu">
+
+					<li>
+						<a href="../Report/urinalysis_report.html">
+							<span class="text sub-text">Urinalysis</span>
+						</a>
+					</li>
+					<li>
+						<a href="../Report/Blood_Type.html">
+							<span class="text sub-text">Blood Type</span>
+						</a>
+					</li>
+
+				</ul>
+			</li>
+
+			<li>
+				<a href="../View_record/View_record.html">
+					<i class='bx bxs-folder-open'></i>
+					<span class="text">View Student Account</span>
+				</a>
+			</li>
+
+			<li class="active">
+				<a href="../Account/Add_Account.html">
+					<i class='bx bxs-user-account'></i>
+					<span class="text">Add Account</span>
+				</a>
+			</li>
+
+
+
+		</ul>
+		<ul class="side-menu">
+
+			<li>
+				<a href="#" class="logout">
+					<i class='bx bxs-log-out-circle'></i>
+					<span class="text">Logout</span>
+				</a>
+			</li>
+		</ul>
+	</section>
+	<!-- SIDEBAR -->
+
+
+
+	<!-- CONTENT -->
+	<section id="content">
+		<!-- NAVBAR -->
+		<nav>
+			<i class='bx bx-menu'></i>
+			<a class="nav-link">UIC Clinical Laboratory</a>
+
+
+		</nav>
+		<!-- NAVBAR -->
+
+		<!-- MAIN -->
+		<main>
+			<div class="head-title">
+				<div class="left">
+
+					<ul class="breadcrumb">
+						<li>
+							<a class="active" href="#">Add Account</a>
+						</li>
+					</ul>
+				</div>
+
+			</div>
+
+
+
+
+			<div class="table-data">
+				<div class="order">
+					<div class="title">Add Account</div>
+					<div class="content">
+						<!-- Registration form -->
+						<form action="../Account/AddAccount.php" method="POST">
+
+							<div class="user-details">
+								<div class="input-box">
+									<span class="details">First Name</span>
+									<input type="text" name="first_name" placeholder="Enter your firstname" required>
+								</div>
+								<div class="input-box">
+									<span class="details">Last Name</span>
+									<input type="text" name="last_name" placeholder="Enter your lastname" required>
+								</div>
+								<div class="input-box">
+									<span class="details">Gender:</span>
+									<select name="gender" required>
+										<option value="" disabled selected>Select Gender</option>
+										<option value="F">Female</option>
+										<option value="M">Male</option>
+									</select>
+								</div>
+								<div class="input-box">
+									<span class="details">Email</span>
+									<input type="text" name="email" placeholder="Enter your email" required>
+								</div>
+								<div class="input-box">
+									<span class="details">Phone Number</span>
+									<input type="text" name="phone" placeholder="Enter your number" required>
+								</div>
+								<div class="input-box">
+									<span class="details">Course & Year:</span>
+									<input type="text" name="course_year" placeholder="Enter course and year" required>
+								</div>
+								<div class="input-box">
+									<span class="details">Student No.:</span>
+									<input type="text" name="student_id" placeholder="Enter Student No." required>
+								</div>
+								<div class="input-box">
+									<span class="details">Department:</span>
+									<input type="text" name="department" placeholder="Enter department" required>
+								</div>
+								<div class="input-box">
+									<span class="details">Password</span>
+									<input type="password" name="password" placeholder="Enter your password" required>
+								</div>
+								<div class="input-box">
+									<span class="details">Confirm Password</span>
+									<input type="password" name="confirm_password" placeholder="Confirm your password" required>
+								</div>
+							</div>
+							<div class="button">
+								<input type="submit" value="Register">
+							</div>
+						</form>
+						
+					</div>
+
+				</div>
+
+
+
+			</div>
+			</div>
+		</main>
+		<!-- MAIN -->
+	</section>
+	<!-- CONTENT -->
+
+
+	<script src="../script.js"></script>
+	<script>
+		document.querySelectorAll('.side-menu > li > a').forEach(item => {
+			item.addEventListener('click', function (e) {
+				const subMenu = this.nextElementSibling;
+				const parentLi = this.parentElement;
+
+
+				document.querySelectorAll('.side-menu .sub-menu').forEach(menu => {
+					if (menu !== subMenu) {
+						menu.style.display = 'none';
+						menu.parentElement.classList.remove('expanded');
+					}
+				});
+
+				if (subMenu) {
+
+					if (subMenu.style.display === 'block') {
+						subMenu.style.display = 'none';
+						parentLi.classList.remove('expanded');
+					} else {
+						subMenu.style.display = 'block';
+						parentLi.classList.add('expanded');
+					}
+				}
+
+			});
+		});
+
+
+		document.querySelectorAll('.side-menu .sub-menu li a').forEach(subItem => {
+			subItem.addEventListener('click', function () {
+
+				const subMenu = this.closest('.sub-menu');
+				if (subMenu) {
+					subMenu.style.display = 'none';
+					subMenu.parentElement.classList.remove('expanded');
+				}
+			});
+		});
+	</script>
+
+
+</body>
+
+</html>
